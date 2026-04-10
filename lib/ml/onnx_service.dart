@@ -89,7 +89,14 @@ class OnnxService {
         }
         runOptions.release();
 
-        return "Output Index: $maxIdx";
+        final labels = [
+          "Dyskeratotic",
+          "Koilocytotic",
+          "Metaplastic",
+          "Parabasal",
+          "Superficial Intermediate"
+        ];
+        return maxIdx >= 0 && maxIdx < labels.length ? labels[maxIdx] : "Output Index: $maxIdx";
       }
 
       return "Output processing error";
